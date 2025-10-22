@@ -1,3 +1,4 @@
+
 /* --- Configurações de Tema (Cores e Fontes) --- */
 :root {
     /* Cores Pedidas */
@@ -25,7 +26,7 @@ body {
     color: var(--cor-texto-padrao);
     margin: 0;
     padding: 0;
-    line-height: 1.7; /* Aumentei um pouco para fontes serifadas */
+    line-height: 1.7; 
 }
 
 .container {
@@ -75,43 +76,100 @@ h3 {
     opacity: 0.9;
 }
 
-/* --- Barra de Navegação --- */
+/* --- MODIFICADO: Barra de Navegação (Preparada para Hambúrguer) --- */
 nav {
     background: var(--cor-branco); /* Branco */
     position: sticky;
     top: 0;
     z-index: 1000;
-    overflow: hidden;
     border-bottom: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    /* NOVO: Flexbox para alinhar logo e menu */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Espaçamento lateral */
+    height: 60px; /* Altura fixa */
 }
-nav ul {
+
+.nav-brand {
+    font-family: var(--fonte-titulos);
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+.nav-links ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px; /* Espaço entre links */
 }
-nav li {
-    margin: 0;
-}
-nav a {
+
+.nav-links a {
     font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
     display: block;
     color: var(--cor-primaria); /* Azul */
     text-align: center;
-    padding: 14px 20px;
+    padding: 14px 16px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s;
 }
-nav a:hover {
+.nav-links a:hover {
     background-color: var(--cor-secundaria); /* Vermelho */
     color: var(--cor-branco); /* Branco */
 }
 
-/* --- Seções de Conteúdo --- */
+/* Link da Rede Social (Desktop) */
+.social-nav-item {
+    margin-left: 20px; /* Empurra para a direita */
+    display: flex;
+    align-items: center;
+}
+.social-nav-item a {
+    display: flex; 
+    align-items: center;
+    gap: 6px; 
+    padding: 8px 10px; /* Padding menor */
+    border-radius: 5px; /* Borda arredondada */
+}
+.social-nav-item a:hover {
+    background-color: #f0f0f0; 
+    color: var(--cor-secundaria); /* Texto muda de cor no hover */
+}
+.social-nav-item svg { 
+    width: 20px;
+    height: 20px;
+    fill: var(--cor-primaria); 
+    transition: all 0.3s;
+}
+.social-nav-item a:hover svg {
+    fill: var(--cor-secundaria);
+}
+
+/* NOVO: Botão Hambúrguer (só aparece no celular) */
+.menu-toggle {
+    display: none; /* Escondido por padrão */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--cor-primaria);
+    transition: all 0.3s ease-in-out;
+}
+/* --- FIM DAS MUDANÇAS NA NAV --- */
+
+
+/* --- Seções de Conteúdo (Sem alterações) --- */
 .section {
     padding: 40px 20px;
     margin-top: 20px;
@@ -119,20 +177,16 @@ nav a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
 #sobre p {
     font-size: 1.1rem;
     margin-bottom: 15px;
 }
-
-/* --- Abas de Programação (Tabs) --- */
 .tabs {
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: #f1f1ff;
     display: flex;
     border-radius: 8px;
 }
-
 .tab-link {
     font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
     flex: 1;
@@ -146,33 +200,26 @@ nav a:hover {
     text-align: center;
     transition: background-color 0.3s;
 }
-
 .tab-link:hover {
     background-color: #ddd;
 }
-
 .tab-link.active {
     background-color: #ccc;
 }
-
 .tab-content {
     display: none;
     padding: 20px 0;
     animation: fadeIn 0.5s;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
-/* --- Listas de Programação e Exposições --- */
 .programacao-lista {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 .programacao-lista li {
     padding: 15px 10px;
     border-bottom: 1px solid #f0f0f0;
@@ -180,11 +227,9 @@ nav a:hover {
     gap: 20px;
     align-items: flex-start;
 }
-
 .programacao-lista li:last-child {
     border-bottom: none;
 }
-
 .programacao-lista time {
     font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
     font-weight: 700;
@@ -193,17 +238,14 @@ nav a:hover {
     flex-shrink: 0;
     font-size: 1.1rem;
 }
-
 .programacao-lista .descricao {
     font-weight: 500;
 }
-
 .programacao-lista .local {
     font-style: italic;
     color: #555;
     margin-left: 10px;
 }
-
 .exposicoes-bloco {
     margin-top: 20px;
     background: #fdfdfd;
@@ -216,13 +258,11 @@ nav a:hover {
     color: var(--cor-primaria); /* Azul */
     margin-top: 0;
 }
-
 .exposicoes-bloco ul {
     list-style-type: disc;
     margin: 0;
     padding-left: 20px;
 }
-
 .exposicoes-bloco li {
     margin-bottom: 10px;
 }
@@ -230,8 +270,6 @@ nav a:hover {
     font-style: italic;
     color: #555;
 }
-
-/* --- Seção Encerramento (Card Especial) --- */
 #encerramento {
     background-color: #f0f6ff; /* Azul bem claro */
     border: 1px solid #cce0ff;
@@ -265,8 +303,6 @@ nav a:hover {
 .lista-turmas strong {
         color: var(--cor-primaria); /* Azul */
 }
-
-/* --- Seção Organização --- */
 .organizacao-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -289,6 +325,7 @@ nav a:hover {
     margin: 0;
 }
 
+/* --- Rodapé (Sem alterações) --- */
 footer {
     display: flex; 
     align-items: center; 
@@ -304,16 +341,15 @@ footer {
     font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
 }
 footer p { 
-    margin: 0; /* Remove a margem padrão do <p> */
+    margin: 0;
 }
-
 .social-link-footer {
-    display: inline-flex; /* Alinha ícone e texto na mesma linha */
+    display: inline-flex;
     align-items: center;
-    gap: 8px; /* Espaço entre ícone e texto */
-    font-family: var(--fonte-titulos); /* Usar a fonte Verdana */
-    color: var(--cor-branco); /* Branco */
-    text-decoration: none; /* Tirar sublinhado */
+    gap: 8px;
+    font-family: var(--fonte-titulos);
+    color: var(--cor-branco); 
+    text-decoration: none;
     font-weight: bold;
     font-size: 0.9rem;
     padding: 8px 12px;
@@ -323,34 +359,20 @@ footer p {
 }
 .social-link-footer:hover {
     background-color: var(--cor-branco);
-    color: var(--cor-primaria); /* Fica branco com texto azul ao passar o mouse */
+    color: var(--cor-primaria);
 }
 .social-link-footer svg {
-    width: 20px; /* Ajustado */
-    height: 20px; /* Ajustado */
-    fill: var(--cor-branco); /* MUDADO: de 'stroke' para 'fill' */
+    width: 20px;
+    height: 20px;
+    fill: var(--cor-branco);
     transition: all 0.3s;
 }
 .social-link-footer:hover svg {
-    fill: var(--cor-primaria); /* MUDADO: de 'stroke' para 'fill' */
+    fill: var(--cor-primaria); 
 }
-       
 
-
-/* --- Responsividade --- */
+/* --- MODIFICADO: Responsividade com Menu Hambúrguer --- */
 @media (max-width: 768px) {
-    .tabs {
-        flex-direction: column;
-    }
-    .sessoes-container {
-        flex-direction: column;
-    }
-    nav ul {
-        flex-direction: column;
-    }
-    nav a {
-        padding: 12px 15px;
-    }
     .hero h1 {
         font-size: 2.2rem;
     }
@@ -363,4 +385,70 @@ footer p {
     h3 {
         font-size: 1.3rem;
     }
+    
+    /* --- NOVO: Estilos do Menu Mobile --- */
+    .menu-toggle {
+        display: block; /* Mostra o botão hambúrguer */
+    }
+
+    .nav-links {
+        /* Esconde o menu de links */
+        display: none;
+        /* Menu ocupa a tela inteira */
+        position: absolute;
+        top: 60px; /* Começa abaixo da nav */
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-branco);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-links.active {
+        display: block; /* Mostra o menu quando 'active' */
+    }
+    
+    .nav-links ul {
+        flex-direction: column; /* Empilha os links */
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-links a {
+        padding: 16px;
+    }
+
+    .social-nav-item {
+        margin-left: 0; /* Reseta a margem no mobile */
+    }
+    .social-nav-item a:hover {
+        background-color: var(--cor-secundaria); /* Mantém o hover vermelho */
+        color: var(--cor-branco);
+    }
+    .social-nav-item a:hover svg {
+        fill: var(--cor-branco);
+    }
+    /* --- FIM DAS REGRAS DO MENU MOBILE --- */
+
+    .tabs {
+        flex-direction: column;
+    }
+    .sessoes-container {
+        flex-direction: column;
+    }
+}
+
+/* --- NOVO: Animação do "X" do Hambúrguer --- */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
