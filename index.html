@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMACC 2025 - Ivani Machado Bezerra</title>
+    <style>
+        /* --- Configurações Globais --- */
+        :root {
+            --cor-primaria: #004a91;
+            --cor-secundaria: #d9534f;
+            --cor-fundo: #f4f4f9;
+            --cor-texto: #333;
+            --cor-fundo-card: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 20px auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--cor-primaria);
+        }
+
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: var(--cor-secundaria);
+            margin-top: 25px;
+        }
+
+        /* --- Cabeçalho (Hero) --- */
+        .hero {
+            background-color: var(--cor-primaria);
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            color: #fff;
+            margin: 0;
+            font-size: 3rem;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin: 10px 0 0;
+        }
+
+        /* --- Barra de Navegação --- */
+        nav {
+            background: #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 0;
+        }
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: var(--cor-secundaria);
+        }
+
+        /* --- Seções de Conteúdo --- */
+        .section {
+            padding: 40px 20px;
+            margin-top: 20px;
+            background: var(--cor-fundo-card);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        #sobre p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- Abas de Programação (Tabs) --- */
+        .tabs {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            display: flex;
+            border-radius: 8px;
+        }
+
+        .tab-link {
+            flex: 1;
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .tab-link:hover {
+            background-color: #ddd;
+        }
+
+        .tab-link.active {
+            background-color: #ccc;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- Listas de Programação e Exposições --- */
+        .programacao-lista {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .programacao-lista li {
+            padding: 15px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .programacao-lista li:last-child {
+            border-bottom: none;
+        }
+
+        .programacao-lista time {
+            font-weight: 700;
+            color: var(--cor-secundaria);
+            min-width: 60px;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .programacao-lista .descricao {
+            font-weight: 500;
+        }
+
+        .programacao-lista .local {
+            font-style: italic;
+            color: #555;
+            margin-left: 10px;
+        }
+
+        .exposicoes-bloco {
+            margin-top: 20px;
+            background: #fdfdfd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--cor-primaria);
+        }
+
+        .exposicoes-bloco ul {
+            list-style-type: disc;
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .exposicoes-bloco li {
+            margin-bottom: 10px;
+        }
+        .exposicoes-bloco .local {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* --- Seção Encerramento (Card Especial) --- */
+        #encerramento {
+            background-color: #fdfae6;
+            border: 1px solid #e0dcb7;
+        }
+        #encerramento h2 {
+            color: #5d4037;
+            margin-top: 0;
+        }
+        .sessoes-container {
+            display: flex;
+            gap: 20px;
+        }
+        .sessao {
+            flex: 1;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .sessao h3 {
+            color: #5d4037;
+            margin-top: 0;
+        }
+        .lista-turmas {
+            list-style: none;
+            padding-left: 0;
+        }
+        .lista-turmas li {
+            margin-bottom: 10px;
+        }
+
+        /* --- Seção Organização --- */
+        .organizacao-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .organizacao-grupo {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .organizacao-grupo h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+        .organizacao-grupo ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* --- Rodapé --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #333;
+            color: #aaa;
+            margin-top: 30px;
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            .sessoes-container {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav a {
+                padding: 12px 15px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>SEMACC 2025</h1>
+        <p>Semana de Arte, Conhecimento e Cultura</p>
+        <p>Escola Estadual Professora Ivani Machado Bezerra</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#sobre">Sobre o Evento</a></li>
+            <li><a href="#programacao">Programação Principal</a></li>
+            <li><a href="#encerramento">Encerramento (03/11)</a></li>
+            <li><a href="#local">Local</a></li>
+            <li><a href="#organizacao">Organização</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <section id="sobre" class="section">
+            <h2>Sobre o Evento</h2>
+            <p>Objetivamos proporcionar aos alunos uma imersão nas principais escolas literárias brasileiras e portuguesas, do Trovadorismo ao Realismo, por meio do estudo, interpretação e recriação de obras clássicas.</p>
+            <p>A proposta é estimular a leitura crítica, a compreensão histórica e estética das manifestações literárias, além de promover a criatividade e a expressão artística dos estudantes por meio de releituras contemporâneas e adaptações diversas.</p>
+        </section>
+
+        <section id="programacao" class="section">
+            <h2>Programação Principal (22 a 24/10)</h2>
+            
+            <div class="tabs">
+                <button class="tab-link active" onclick="openDay(event, 'dia22')" id="defaultOpen">22 de Outubro</button>
+                <button class="tab-link" onclick="openDay(event, 'dia23')">23 de Outubro</button>
+                <button class="tab-link" onclick="openDay(event, 'dia24')">24 de Outubro</button>
+            </div>
+
+            <div id="dia22" class="tab-content">
+                <h3>22 de outubro - 4ª feira</h3>
+                <ul class="programacao-lista">
+                    <li><time>7h30</time> <span class="descricao">Abertura Oficial</span></li>
+                    <li><time>8h00</time> <span class="descricao">Apresentações Culturais: Música e Dança (Estudantes: Hélica, Juliana, Iasmim, Letícia, Lucy e Tarsila)</span></li>
+                    <li><time>9h00</time> <span class="descricao">Concerto UFRN</span></li>
+                    <li><time>10h00</time> <span class="descricao">Palestra DEMUTRAN: Trânsito Seguro</span></li>
+                    <li><time>13h00</time> <span class="descricao">Hit box - Prof. Emerson e Prof. João Paulo</span> <span class="local">Quadra</span></li>
+                    <li><time>14h00</time> <span class="descricao">Palestra DEMUTRAN: Trânsito Seguro</span></li>
+                </ul>
+
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Manhã</h4>
+                    <ul>
+                        <li>Exposição Fotográfica - Prof João Pedro <span class="local">Mezanino</span></li>
+                        <li>Cangaço: Cultura, identidade e resistência nordestina - Prof Leonardo <span class="local">sala 9</span></li>
+                        <li>Experimentos de reações químicas - Prof Rafael <span class="local">Laboratório de Química</span></li>
+                        <li>Experimentos de Termodinâmica - Prof Ivan <span class="local">Laboratório de Física</span></li>
+                        <li>Frida Kahlo: entre el dolor y los colores - Prof Manu <span class="local">sala 3</span></li>
+                        <li>Jogos matemáticos, Arduino, Projeto carro elétrico - Prof. Janilson e Prof Marcos <span class="local">Laboratório de Matemática</span></li>
+                        <li>Trabalhos de Iniciação Científica - Prof Isário <span class="local">Laboratório de Biologia</span></li>
+                    </ul>
+                </div>
+                
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Tarde</h4>
+                    <ul>
+                        <li>Apresentação Produção de Pedro Gabriel - 2ª série A <span class="local">Refeitório</span></li>
+                        <li>Orientação para construção de um site - Prof Kleiton <span class="local">Laboratório de Informática</span></li>
+                        <li>Start na linguagem: explorando jogos eletrônicos - Prof Danilo e Prof. Ricardo <span class="local">sala 6</span></li>
+                        <li>Frida Kahlo: entre el dolor y los colores - Prof Manu <span class="local">sala 3</span></li>
+                        <li>Experimentos de Termodinâmica - Prof Ivan <span class="local">Laboratório de Física</span></li>
+                        <li>Experimentos de reações químicas - Prof Rafael <span class="local">Laboratório de Química</span></li>
+                        <li>Trabalhos de Iniciação Científica - Prof Isário <span class="local">Laboratório de Biologia</span></li>
+                        <li>Exposição audiovisual: Vozes da resistência: música e ditadura no Brasil - Prof Diugo <span class="local">sala 10</span></li>
+                    </ul>
+                </div>
+                
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Noite</h4>
+                    <ul>
+                        <li>Fábrica do Amanhã: A Revolução 4.0 em miniatura - Prof. Karidja <span class="local">Refeitório</span></li>
+                        <li>Sabores que hablam español - Prof Manu <span class="local">sala 5</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="dia23" class="tab-content">
+                <h3>23 de outubro - 5ª feira</h3>
+                <ul class="programacao-lista">
+                    <li><time>7h30</time> <span class="descricao">Apresentação musical - Prof. Diugo</span> <span class="local">Refeitório</span></li>
+                    <li><time>8h00</time> <span class="descricao">Júri simulado: Caso "A queda do empilhadeirista" - Prof Karidja</span> <span class="local">sala 4</span></li>
+                    <li><time>9h10</time> <span class="descricao">Palestra Empreendedorismo: Receita do sucesso (Bruno Cake) - Prof. Karidja</span> <span class="local">sala 5</span></li>
+                    <li><time>10h00</time> <span class="descricao">Júri simulado: Caso "A queda do empilhadeirista" - Prof Karidja</span> <span class="local">sala 4</span></li>
+                    <li><time>13h00</time> <span class="descricao">Apresentação Cultural: Música (Estudantes: Hélica, Juliana e Iasmim)</span></li>
+                    <li><time>16h00</time> <span class="descricao">Premiação Leitores do ano - Prof Mary</span> <span class="local">Refeitório</span></li>
+                </ul>
+                
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Manhã</h4>
+                    <ul>
+                        <li>Exposição Fotográfica - Prof João Pedro <span class="local">Mezanino</span></li>
+                        <li>Cangaço: Cultura, identidade e resistência nordestina - Prof Leonardo <span class="local">sala 9</span></li>
+                        <li>Experimentos de reações químicas - Prof Rafael <span class="local">Laboratório de Química</span></li>
+                        <li>Slides Conscientização Prof Nilzia <span class="local">sala 2</span></li>
+                        <li>Trabalhos de Iniciação Científica - Prof Isário <span class="local">Laboratório de Biologia</span></li>
+                        <li>Orientação para construção de um site - Prof Kleiton <span class="local">Laboratório de Informática</span></li>
+                        <li>Nossos olhares sobre os povos originários: cultura indígena - Prof Luzimar <span class="local">sala 8</span></li>
+                        <li>Exposição audiovisual: Vozes da resistência: música e ditadura no Brasil - Prof Diugo <span class="local">sala 10</span></li>
+                        <li>Portfólio de gêneros: produções textuais - Prof. Francisco <span class="local">sala 7</span></li>
+                    </ul>
+                </div>
+                
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Tarde</h4>
+                    <ul>
+                        <li>Orientação para construção de um site - Prof Kleiton <span class="local">Laboratório de Informática</span></li>
+                        <li>Nossos olhares sobre os povos originários: cultura indígena - Prof Luzimar <span class="local">sala 8</span></li>
+                        <li>Trabalhos de Iniciação Científica - Prof Isário <span class="local">Laboratório de Biologia</span></li>
+                        <li>Exposição Fotográfica - Prof João Pedro <span class="local">Mezanino</span></li>
+                        <li>Jogos matemáticos, Arduino, Projeto carro elétrico - Prof Janilson e Prof Wandell <span class="local">Laboratório de Matemática</span></li>
+                        <li>Experimentos de reações químicas - Prof Rafael e Prof. Washington <span class="local">Laboratório de Química</span></li>
+                        <li>Experimentos de Termodinâmica - Prof Ivan e Prof Yuri <span class="local">Laboratório de Física</span></li>
+                    </ul>
+                </div>
+
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Noite</h4>
+                    <ul>
+                        <li>Júri simulado - Prof Karidja <span class="local">sala 4</span></li>
+                        <li>Palestra Empreendedorismo: Receita do sucesso (Bruno Cake) - Prof. Karidja <span class="local">Refeitório</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="dia24" class="tab-content">
+                <h3>24 de outubro - 6ª feira</h3>
+                <ul class="programacao-lista">
+                    <li><time>7h30</time> <span class="descricao">Apresentação Cultural: Música (Estudantes: Hélica, Juliana e Iasmim)</span></li>
+                    <li><time>9h30</time> <span class="descricao">Apresentação Frida Kahlo: entre el dolor y los colores - Prof Manu</span> <span class="local">sala 3</span></li>
+                    <li><time>10h00</time> <span class="descricao">Palestra: Mundo do trabalho, estágios e aprendizagem profissional - SUEP</span> <span class="local">Refeitório</span></li>
+                    <li><time>13h00</time> <span class="descricao">Apresentação Cultural: Dança (Estudantes: Letícia, Lucy e Tarsila)</span></li>
+                    <li><time>16h00</time> <span class="descricao">Premiação da notícia com mais engajamento - Prof Layane</span> <span class="local">Refeitório</span></li>
+                </ul>
+
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Manhã</h4>
+                    <ul>
+                        <li>Trabalhos de Iniciação Científica - Prof Isário <span class="local">Laboratório de Biologia</span></li>
+                        <li>Slides Conscientização Prof Nilzia <span class="local">sala 2</span></li>
+                        <li>Cangaço: Cultura, identidade e resistência nordestina - Prof Leonardo <span class="local">sala 9</span></li>
+                        <li>Exposição Fotográfica - Prof João Pedro <span class="local">Mezanino</span></li>
+                        <li>Jogos matemáticos, Arduino, Projeto carro elétrico - Prof. Janilson e Prof Marcos <span class="local">Laboratório de Matemática</span></li>
+                        <li>Exposição audiovisual: Vozes da resistência: música e ditadura no Brasil - Prof Diugo <span class="local">sala 10</span></li>
+                        <li>Portfólio de gêneros: produções textuais - Prof Francisco <span class="local">sala 7</span></li>
+                        <li>Nossos olhares sobre os povos originários: cultura indígena - Prof Luzimar <span class="local">sala 8</span></li>
+                    </ul>
+                </div>
+                
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Tarde</h4>
+                    <ul>
+                        <li>Experimentos de Termodinâmica - Prof Ivan <span class="local">Laboratório de Física</span></li>
+                        <li>Orientação para construção de um site - Prof Kleiton <span class="local">Laboratório de Informática</span></li>
+                        <li>Exposição Fotográfica - Prof João Pedro <span class="local">Mezanino</span></li>
+                        <li>Frida Kahlo: entre el dolor y los colores - Prof Manu <span class="local">sala 3</span></li>
+                        <li>Jogos matemáticos, Arduino, Projeto carro elétrico - Prof Marcos <span class="local">Laboratório de Matemática</span></li>
+                        <li>Portfólio de gêneros: produções textuais - Prof Francisco <span class="local">sala 7</span></li>
+                        <li>Trabalhos de Iniciação Científica - Prof Isário <span class="local">Laboratório de Biologia</span></li>
+                        <li>Nossos olhares sobre os povos originários: cultura indígena - Prof Luzimar <span class="local">sala 8</span></li>
+                        <li>O futuro do trabalho: como se adaptar às novas tendências - Karidja <span class="local">sala 5</span></li>
+                    </ul>
+                </div>
+
+                <div class="exposicoes-bloco">
+                    <h4>Exposições Noite</h4>
+                    <ul>
+                        <li>Projeto de produto: Logística sensitiva - Prof João Pedro <span class="local">Refeitório</span></li>
+                        <li>Construindo espaços: a Geografia da caixa de areia - Prof Luzimar <span class="local">Refeitório</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="encerramento" class="section">
+            <h2>Encerramento: Do Trovadorismo ao Realismo</h2>
+            <p><strong>Data:</strong> 03 de Novembro<br>
+               <strong>Local:</strong> Teatro Municipal Prefeito Poti Cavalcanti</p>
+            
+            <h3>Apresentações das Turmas</h3>
+            <ul class="lista-turmas">
+                <li><strong>1ª Série A (Propedeutica)</strong> - Jogral: a literatura medieval</li>
+                <li><strong>1ª Série B (RC)</strong> - A farsa da boa preguiça, de Ariano Suassuna</li>
+                <li><strong>1ª Série C (RC)</strong> - A Jornada de Dante pelos pecados modernos</li>
+                <li><strong>2ª Série A</strong> - Iracema, José de Alencar</li>
+                <li><strong>2ª Série B</strong> - O cortiço, Aluísio de Azevedo</li>
+                <li><strong>2ª Série C</strong> - Senhora, José de Alencar</li>
+                <li><strong>2ª Série D</strong> - Dom Casmurro, Machado de Assis</li>
+            </ul>
+
+            <h3>Sessões</h3>
+            <div class="sessoes-container">
+                <div class="sessao">
+                    <h3>Manhã - 9h</h3>
+                    <p><strong>Apresentações:</strong><br> 1ªC, 2ªC, 1ºB, 2ª B</p>
+                    <p><strong>Público-alvo:</strong><br> 3ªA, 3ªE, 1ª A, 2ªA, 2ª D (e alunos não engajados)</p>
+                </div>
+                <div class="sessao">
+                    <h3>Tarde - 14h</h3>
+                    <p><strong>Apresentações:</strong><br> 1ªA, 2ªA e 2ºD</p>
+                    <p><strong>Público-alvo:</strong><br> 1ªC, 2ªC, 1ªB, 2ªB (e alunos não engajados)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="local" class="section">
+            <h2>Local</h2>
+            <p>A programação principal (22 a 24/10) ocorrerá nas dependências da <strong>Escola Estadual Professora Ivani Machado Bezerra</strong>.</p>
+            <p>O evento de encerramento (03/11) será realizado no <strong>Teatro Municipal Prefeito Poti Cavalcanti</strong>.</p>
+        </section>
+        
+        <section id="organizacao" class="section">
+            <h2>Organização e Apoio</h2>
+            <div class="organizacao-grid">
+                <div class="organizacao-grupo">
+                    <h3>Direção</h3>
+                    <ul>
+                        <li>Jefferson Gomes Penha (Diretor)</li>
+                        <li>Gilvaneide Gomes da Silva (Vice-Diretora)</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Coordenação Pedagógica</h3>
+                    <ul>
+                        <li>Radimila Lindembergue da Silva</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Coordenação Administrativa-Financeira</h3>
+                    <ul>
+                        <li>Leonardo da Costa</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Apoio Pedagógico</h3>
+                    <ul>
+                        <li>Cláudia Rademacher</li>
+                        <li>Abinalva Damásio</li>
+                        <li>Luís Carlos Ferreira</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Coordenação Linguagens</h3>
+                    <ul>
+                        <li>Rosa Manuelle Xavier</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Coordenação Natureza e Matemática</h3>
+                    <ul>
+                        <li>Rafael Alves</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Coordenação Humanas</h3>
+                    <ul>
+                        <li>Luzimar Pereira</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Coordenação Área Técnica</h3>
+                    <ul>
+                        <li>Kleiton Martins</li>
+                        <li>Karidja Nascimento</li>
+                    </ul>
+                </div>
+                <div class="organizacao-grupo">
+                    <h3>Arte da Capa</h3>
+                    <ul>
+                        <li>Mariana Lopes e Ana Lídia</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SEMACC - Escola Estadual Professora Ivani Machado Bezerra</p>
+    </footer>
+
+    <script>
+        function openDay(evt, dayName) {
+            // Declara todas as variáveis
+            var i, tabcontent, tablinks;
+
+            // Pega todos os elementos com class="tab-content" e esconde eles
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Pega todos os elementos com class="tab-link" e remove a classe "active"
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Mostra a aba atual, e adiciona a classe "active" no botão que abriu a aba
+            document.getElementById(dayName).style.display = "block";
+            if (evt) {
+              evt.currentTarget.className += " active";
+            }
+        }
+
+        // Abre a primeira aba por padrão ao carregar a página
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("defaultOpen").click();
+        });
+    </script>
+
+</body>
+</html>
