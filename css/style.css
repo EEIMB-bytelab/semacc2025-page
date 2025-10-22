@@ -1,0 +1,366 @@
+/* --- Configurações de Tema (Cores e Fontes) --- */
+:root {
+    /* Cores Pedidas */
+    --cor-primaria: #004a91;  /* Azul */
+    --cor-secundaria: #CC0000; /* Vermelho */
+    --cor-branco: #ffffff;    /* Branco */
+
+    /* Cores Neutras Essenciais */
+    --cor-texto-padrao: #333333; /* Cinza Escuro (para leitura) */
+    --cor-fundo-pagina: #f4f4f9;  /* Cinza bem claro (para destacar os cards) */
+
+    /* Fontes Pedidas */
+    --fonte-formal-corpo: Georgia, "Times New Roman", serif;
+    --fonte-titulos: Verdana, Geneva, sans-serif;
+    --fonte-monospace: "Courier New", Courier, monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fonte-formal-corpo); /* Fonte 1: Formal (Corpo) */
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-padrao);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7; /* Aumentei um pouco para fontes serifadas */
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
+}
+
+h2 {
+    color: var(--cor-primaria); /* Azul */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    font-size: 2rem;
+}
+
+h3 {
+    color: var(--cor-secundaria); /* Vermelho */
+    margin-top: 25px;
+    font-size: 1.5rem;
+}
+
+/* --- Cabeçalho (Hero) --- */
+.hero {
+    background-color: var(--cor-primaria); /* Azul */
+    color: var(--cor-branco); /* Branco */
+    padding: 60px 20px;
+    text-align: center;
+}
+.hero h1 {
+    color: var(--cor-branco); /* Branco */
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+}
+.hero p {
+    font-family: var(--fonte-monospace); /* Fonte 3: Monospace (Subtítulo) */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin: 10px 0 0;
+    opacity: 0.9;
+}
+
+/* --- Barra de Navegação --- */
+nav {
+    background: var(--cor-branco); /* Branco */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+nav li {
+    margin: 0;
+}
+nav a {
+    font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
+    display: block;
+    color: var(--cor-primaria); /* Azul */
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+nav a:hover {
+    background-color: var(--cor-secundaria); /* Vermelho */
+    color: var(--cor-branco); /* Branco */
+}
+
+/* --- Seções de Conteúdo --- */
+.section {
+    padding: 40px 20px;
+    margin-top: 20px;
+    background: var(--cor-branco); /* Branco */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#sobre p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* --- Abas de Programação (Tabs) --- */
+.tabs {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    display: flex;
+    border-radius: 8px;
+}
+
+.tab-link {
+    font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
+    flex: 1;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.tab-link:hover {
+    background-color: #ddd;
+}
+
+.tab-link.active {
+    background-color: #ccc;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- Listas de Programação e Exposições --- */
+.programacao-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.programacao-lista li {
+    padding: 15px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.programacao-lista li:last-child {
+    border-bottom: none;
+}
+
+.programacao-lista time {
+    font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
+    font-weight: 700;
+    color: var(--cor-secundaria); /* Vermelho */
+    min-width: 60px;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+}
+
+.programacao-lista .descricao {
+    font-weight: 500;
+}
+
+.programacao-lista .local {
+    font-style: italic;
+    color: #555;
+    margin-left: 10px;
+}
+
+.exposicoes-bloco {
+    margin-top: 20px;
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--cor-primaria); /* Azul */
+}
+.exposicoes-bloco h4 {
+    font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
+    color: var(--cor-primaria); /* Azul */
+    margin-top: 0;
+}
+
+.exposicoes-bloco ul {
+    list-style-type: disc;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.exposicoes-bloco li {
+    margin-bottom: 10px;
+}
+.exposicoes-bloco .local {
+    font-style: italic;
+    color: #555;
+}
+
+/* --- Seção Encerramento (Card Especial) --- */
+#encerramento {
+    background-color: #f0f6ff; /* Azul bem claro */
+    border: 1px solid #cce0ff;
+}
+#encerramento h2 {
+    color: var(--cor-primaria); /* Azul */
+    margin-top: 0;
+}
+.sessoes-container {
+    display: flex;
+    gap: 20px;
+}
+.sessao {
+    flex: 1;
+    background: var(--cor-branco); /* Branco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.sessao h3 {
+    color: var(--cor-primaria); /* Azul */
+    margin-top: 0;
+}
+.lista-turmas {
+    list-style: none;
+    padding-left: 0;
+}
+.lista-turmas li {
+    margin-bottom: 10px;
+}
+.lista-turmas strong {
+        color: var(--cor-primaria); /* Azul */
+}
+
+/* --- Seção Organização --- */
+.organizacao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.organizacao-grupo {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+}
+.organizacao-grupo h3 {
+    font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
+    color: var(--cor-primaria); /* Azul */
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+.organizacao-grupo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    text-align: center;
+    padding: 20px; 
+    background: var(--cor-primaria); /* Azul */
+    color: var(--cor-branco); /* Branco */
+    margin-top: 30px;
+    opacity: 0.95;
+    font-family: var(--fonte-titulos); /* Fonte 2: Títulos (Verdana) */
+}
+footer p { 
+    margin: 0; /* Remove a margem padrão do <p> */
+}
+
+.social-link-footer {
+    display: inline-flex; /* Alinha ícone e texto na mesma linha */
+    align-items: center;
+    gap: 8px; /* Espaço entre ícone e texto */
+    font-family: var(--fonte-titulos); /* Usar a fonte Verdana */
+    color: var(--cor-branco); /* Branco */
+    text-decoration: none; /* Tirar sublinhado */
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border: 1px solid var(--cor-branco);
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.social-link-footer:hover {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria); /* Fica branco com texto azul ao passar o mouse */
+}
+.social-link-footer svg {
+    width: 20px; /* Ajustado */
+    height: 20px; /* Ajustado */
+    fill: var(--cor-branco); /* MUDADO: de 'stroke' para 'fill' */
+    transition: all 0.3s;
+}
+.social-link-footer:hover svg {
+    fill: var(--cor-primaria); /* MUDADO: de 'stroke' para 'fill' */
+}
+       
+
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
+    .sessoes-container {
+        flex-direction: column;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    nav a {
+        padding: 12px 15px;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    h2 {
+        font-size: 1.7rem;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+}
